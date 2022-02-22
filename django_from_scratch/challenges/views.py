@@ -33,7 +33,7 @@ def Monthly_num(request, month):
 
 
 def Monthly_str(request, month):
-    if month in monthly_ch_list:
+    try:
         return HttpResponse(monthly_ch_dict[month])
-    else:
+    except:
         return HttpResponseNotFound("Not defined")
