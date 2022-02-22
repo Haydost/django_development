@@ -1,5 +1,5 @@
 from urllib import request
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -27,7 +27,7 @@ def Monthly_num(request, month):
     if month <= 12:
         indx = month-1
         returned_key = monthly_ch_list[indx]
-        return HttpResponse(monthly_ch_dict[returned_key])
+        return HttpResponseRedirect("/challenges/" + returned_key)
     else:
         return HttpResponseNotFound("number entered for month is greater than 12")
 
