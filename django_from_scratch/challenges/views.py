@@ -27,11 +27,13 @@ def Monthly_num(request, month):
         redirect_path = reverse("month-challenge", args=[redirect_month])
         return HttpResponseRedirect(redirect_path)
     else:
-        return HttpResponseNotFound("number entered for month is greater than 12")
+        return HttpResponseNotFound("<h1> number entered for month is greater than 12 </h1>")
 
 
 def Monthly_str(request, month):
     try:
-        return HttpResponse(monthly_ch_dict[month])
+        challange_text = monthly_ch_dict[month]
+        returned_resp = f"<h1> {challange_text} </h1>"
+        return HttpResponse(returned_resp)
     except:
-        return HttpResponseNotFound("Not defined")
+        return HttpResponseNotFound("<h1> Not defined </h1>")
