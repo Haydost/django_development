@@ -19,10 +19,9 @@ monthly_ch_dict = {
 
 }
 
-monthly_ch_list = list(monthly_ch_dict.keys())
-
 
 def Monthly_num(request, month):
+    monthly_ch_list = list(monthly_ch_dict.keys())
     if month <= 12:
         redirect_month = monthly_ch_list[month-1]
         redirect_path = reverse("month-challenge", args=[redirect_month])
