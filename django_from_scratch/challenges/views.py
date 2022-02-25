@@ -20,6 +20,16 @@ monthly_ch_dict = {
 }
 
 
+def index(request):
+    months = list(monthly_ch_dict.keys())
+    list_items = ""
+    for month in months:
+        month_list = reverse("month-challenge", args=[month])
+        list_items += f"<li><a href='{month_list}'>{month}</a></li>"
+    response_data = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_data)
+
+
 def Monthly_num(request, month):
     monthly_ch_list = list(monthly_ch_dict.keys())
     if month <= 12:
