@@ -32,12 +32,12 @@ def index(request):
 
 def Monthly_num(request, month):
     monthly_ch_list = list(monthly_ch_dict.keys())
-    if month <= 12:
+    if month <= len(monthly_ch_list):
         redirect_month = monthly_ch_list[month-1]
         redirect_path = reverse("month-challenge", args=[redirect_month])
         return HttpResponseRedirect(redirect_path)
     else:
-        return HttpResponseNotFound("<h1> number entered for month is greater than 12 </h1>")
+        return HttpResponseNotFound("<h1> number entered for month is greater than 12! </h1>")
 
 
 def Monthly_str(request, month):
