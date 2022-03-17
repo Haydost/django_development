@@ -4,18 +4,18 @@ from django.urls import reverse
 # Create your views here.
 
 monthly_ch_dict = {
-    "January": "Walk 20min every day",
-    "February": "Read book at least 20min before sleep",
-    "March": "learn Django 30min every day",
-    "April": "Walk 20min every day",
-    "May": "Read book at least 20min before sleep",
-    "June": "learn Django 30min every day",
-    "July": "Walk 20min every day",
-    "August": "Read book at least 20min before sleep",
-    "September": "learn Django 30min every day",
-    "October": "Walk 20min every day",
-    "November": "Read book at least 20min before sleep",
-    "December": "learn Django 30min every day"
+    "january": "Walk 20min every day",
+    "february": "Read book at least 20min before sleep",
+    "march": "learn Django 30min every day",
+    "april": "Walk 20min every day",
+    "may": "Read book at least 20min before sleep",
+    "june": "learn Django 30min every day",
+    "july": "Walk 20min every day",
+    "august": "Read book at least 20min before sleep",
+    "september": "learn Django 30min every day",
+    "october": "Walk 20min every day",
+    "november": "Read book at least 20min before sleep",
+    "december": "learn Django 30min every day"
 
 }
 
@@ -24,8 +24,9 @@ def index(request):
     months = list(monthly_ch_dict.keys())
     list_items = ""
     for month in months:
+        cap_month=month.capitalize()
         month_list = reverse("month-challenge", args=[month])
-        list_items += f"<li><a href='{month_list}'>{month}</a></li>"
+        list_items += f"<li><a href='{month_list}'>{cap_month}</a></li>"
     response_data = f"<ul>{list_items}</ul>"
     return HttpResponse(response_data)
 
