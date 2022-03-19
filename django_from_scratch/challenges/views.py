@@ -1,7 +1,8 @@
 from urllib import request
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse
-from django.template.loader import render_to_string
+#from django.template.loader import render_to_string
 # Create your views here.
 
 monthly_ch_dict = {
@@ -25,7 +26,7 @@ def index(request):
     months = list(monthly_ch_dict.keys())
     list_items = ""
     for month in months:
-        cap_month=month.capitalize()
+        cap_month = month.capitalize()
         month_list = reverse("month-challenge", args=[month])
         list_items += f"<li><a href='{month_list}'>{cap_month}</a></li>"
     response_data = f"<ul>{list_items}</ul>"
@@ -44,9 +45,10 @@ def Monthly_num(request, month):
 
 def Monthly_str(request, month):
     try:
-        challange_text = monthly_ch_dict[month]
+        #challange_text = monthly_ch_dict[month]
         #returned_resp = f"<h1> {challange_text} </h1>"
-        returned_resp=render_to_string("challenges/challenge.html")
-        return HttpResponse(returned_resp)
+        #returned_resp = render_to_string("challenges/challenge.html")
+        # return HttpResponse(returned_resp)
+        return render(request, "challenges/challenge.html")
     except:
         return HttpResponseNotFound("<h1> Not defined </h1>")
