@@ -45,10 +45,14 @@ def Monthly_num(request, month):
 
 def Monthly_str(request, month):
     try:
-        #challange_text = monthly_ch_dict[month]
+        challange_text = monthly_ch_dict[month]
+        month_cap = month.capitalize()
         #returned_resp = f"<h1> {challange_text} </h1>"
         #returned_resp = render_to_string("challenges/challenge.html")
         # return HttpResponse(returned_resp)
-        return render(request, "challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {
+            "text": challange_text,
+            "month_name": month_cap
+        })
     except:
         return HttpResponseNotFound("<h1> Not defined </h1>")
