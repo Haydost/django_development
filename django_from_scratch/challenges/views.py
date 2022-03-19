@@ -1,6 +1,7 @@
 from urllib import request
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 # Create your views here.
 
 monthly_ch_dict = {
@@ -44,7 +45,8 @@ def Monthly_num(request, month):
 def Monthly_str(request, month):
     try:
         challange_text = monthly_ch_dict[month]
-        returned_resp = f"<h1> {challange_text} </h1>"
+        #returned_resp = f"<h1> {challange_text} </h1>"
+        returned_resp=render_to_string("challenges/challenge.html")
         return HttpResponse(returned_resp)
     except:
         return HttpResponseNotFound("<h1> Not defined </h1>")
