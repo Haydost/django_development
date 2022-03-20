@@ -17,15 +17,15 @@ monthly_ch_dict = {
     "september": "learn Django 30min every day",
     "october": "Walk 20min every day",
     "november": "Read book at least 20min before sleep",
-    "december": "learn Django 30min every day"
+    "december": None
 
 }
 
 
 def index(request):
     months = list(monthly_ch_dict.keys())
-    return render(request, "challenges/index.html",{
-        "month_k":months
+    return render(request, "challenges/index.html", {
+        "month_k": months
     })
     #list_items = ""
     # for month in months:
