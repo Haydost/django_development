@@ -1,6 +1,9 @@
 {% extends "base.html" %}
-{% block page_title %}All Challenges{% endblock %}
+{% block page_title %}
+    All Challenges
+{% endblock page_title %}
 {% block content %}
+    {% include "challenges/includes/header.html" %}
     <ul>
         {% for mon in month_k %}
             <li>
@@ -8,4 +11,4 @@
             </li>
         {% endfor %}
     </ul>
-{% endblock %}
+{% endblock content %}
