@@ -1,8 +1,7 @@
-from urllib import request
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-#from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 # Create your views here.
 
 monthly_ch_dict = {
@@ -57,4 +56,5 @@ def Monthly_str(request, month):
             "month_name": month
         })
     except:
-        return HttpResponseNotFound("<h1> Not defined </h1>")
+        response_data = render_to_string("404.html")
+        return HttpResponseNotFound(response_data)
